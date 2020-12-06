@@ -1,0 +1,31 @@
+version: "3.2"
+services:
+  auth-service:
+    container_name: auth-service
+    image: auth-service
+    build:
+      context: '.'
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./:/var/app
+      - ./.docker/start.sh:/usr/local/bin/start.sh
+    depends_on:
+      - auth-database
+  auth-database:
+    container_name: auth-database
+    image: mysql
+    command: --default-auth-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  auth-adminer:
+    container_name: auth-adminer
+    image: adminer
+    restart: always
+    environment: 
+        ADMINER_DEFAULT_SERVER: auth-database
+    ports:
+      - ${ADMINER_PORT}:8080

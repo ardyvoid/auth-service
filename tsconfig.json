@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "dist",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["jest"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["./*.ts", "./*.tsx", "./**/*.spec.ts"],
+  "exclude": ["./node_modules"]
+}
