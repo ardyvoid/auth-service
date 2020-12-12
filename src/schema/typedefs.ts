@@ -4,8 +4,7 @@ import { DocumentNode } from 'graphql';
 export const typeDefs: DocumentNode = gql`
   type AuthUser @key(fields: "id") {
     id: ID!
-    username: String!
-    email: String
+    email: String!
     role: String
     active: Boolean
     createdAt: String
@@ -33,15 +32,15 @@ export const typeDefs: DocumentNode = gql`
   }
 
   type Query {
-    loginUser(username: String!, password: String!): AuthToken
+    loginUser(email: String!, password: String!): AuthToken
     findUser(id: ID!): AuthUser
-    findUsername(username: String!): AuthExists
+    findUsername(email: String!): AuthExists
     findEmail(email: String!): AuthExists
     authedUser: AuthUser
   }
 
   type Mutation {
-    registerUser(username: String!, email: String!): AuthUserID
+    registerUser(email: String!, email: String!): AuthUserID
     resetUser(email: String!): AuthSuccess
     activateUser(id: String!, code: String!): AuthCode
     passwordUser(id: String!, code: String!, password: String!): AuthSuccess

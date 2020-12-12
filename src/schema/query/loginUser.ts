@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 
 export const loginUser = async (parent: any, args: any, context: any, info: any) => {
   try {
-    const { username, password } = args;
-    const user = await context.db.authUser.findUnique({ where: { username, active: true } });
+    const { email, password } = args;
+    const user = await context.db.authUser.findUnique({ where: { email } });
 
     if (!user) {
       throw new ApolloError('Invalid credentials');

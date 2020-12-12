@@ -14,7 +14,6 @@ export const registerUser = async (parent: any, args: any, context: any) => {
     const code = generateCode();
     const { username, email } = args;
     const user = await context.db.authUser.create({
-      username: username,
       email: email,
       roles: { set: 'REGISTERED' },
       code: bcrypt.hashSync(code, 12)

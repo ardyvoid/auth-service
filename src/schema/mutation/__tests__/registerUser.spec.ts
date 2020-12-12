@@ -9,9 +9,7 @@ describe('registerUser', () => {
   });
 
   it('should call database client to create user with details and return id on success', async () => {
-    const username = 'xxxxx';
     const email = 'xxxxx@xxxxx.xxx';
-    const pin = '0000';
     const expected = {
       id: 1
     };
@@ -30,7 +28,7 @@ describe('registerUser', () => {
 
     const context = { db };
 
-    const actual = await registerUser({}, { username, email, pin }, context);
+    const actual = await registerUser({}, { email }, context);
 
     expect(authUserCreate).toHaveBeenCalledTimes(1);
     expect(actual).toMatchObject({ id: 1 });
