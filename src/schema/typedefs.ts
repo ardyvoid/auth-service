@@ -24,6 +24,10 @@ export const typeDefs: DocumentNode = gql`
     token: String!
   }
 
+  type AuthSuccess {
+    success: Boolean!
+  }
+
   type AuthExists {
     exists: Boolean!
   }
@@ -37,9 +41,9 @@ export const typeDefs: DocumentNode = gql`
   }
 
   type Mutation {
-    registerUser(username: String!, email: String!, pin: String!): AuthUserID
-    resetUser(email: String!): AuthUserID
+    registerUser(username: String!, email: String!): AuthUserID
+    resetUser(email: String!): AuthSuccess
     activateUser(id: String!, code: String!): AuthCode
-    passwordUser(id: String!, code: String!, password: String!): Boolean
+    passwordUser(id: String!, code: String!, password: String!): AuthSuccess
   }
 `;
