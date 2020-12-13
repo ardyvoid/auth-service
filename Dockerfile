@@ -1,4 +1,4 @@
-FROM node:12.13
+FROM node:14.15
 
 # Define required production defaults so the container can run without having to have these defined again
 ENV NODE_ENV=production
