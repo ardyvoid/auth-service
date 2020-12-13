@@ -27,4 +27,6 @@ else
   npm run --prefix /var/app dev;
 fi
 
+cd /var/app;
+
 exec "$@"
