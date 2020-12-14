@@ -8,6 +8,11 @@ export const typeDefs: DocumentNode = gql`
     role: String
     active: Boolean
     createdAt: String
+    customer: Customer
+  }
+
+  extend type Customer @key(fields: "authUserId") {
+    authUserId: ID! @external
   }
 
   type AuthUserID {
